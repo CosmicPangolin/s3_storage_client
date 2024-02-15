@@ -2,11 +2,11 @@ import 'dart:convert';
 
 import 'package:convert/convert.dart';
 import 'package:crypto/crypto.dart';
-import 'package:s3_storage/src/s3.dart';
-import 'package:s3_storage/src/s3_client.dart';
-import 'package:s3_storage/src/s3_errors.dart';
-import 'package:s3_storage/src/s3_helpers.dart';
-import 'package:s3_storage/src/utils.dart';
+import 'package:s3_storage_client/src/s3.dart';
+import 'package:s3_storage_client/src/s3_client.dart';
+import 'package:s3_storage_client/src/s3_errors.dart';
+import 'package:s3_storage_client/src/s3_helpers.dart';
+import 'package:s3_storage_client/src/utils.dart';
 
 const signV4Algorithm = 'AWS4-HMAC-SHA256';
 

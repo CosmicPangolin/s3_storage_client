@@ -2,15 +2,15 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:typed_data';
 
-import 'package:s3_storage/models.dart';
-import 'package:s3_storage/src/s3_client.dart';
-import 'package:s3_storage/src/s3_errors.dart';
-import 'package:s3_storage/src/s3_helpers.dart';
-import 'package:s3_storage/src/s3_poller.dart';
-import 'package:s3_storage/src/s3_sign.dart';
-import 'package:s3_storage/src/s3_stream.dart';
-import 'package:s3_storage/src/s3_uploader.dart';
-import 'package:s3_storage/src/utils.dart';
+import 'package:s3_storage_client/models.dart';
+import 'package:s3_storage_client/src/s3_client.dart';
+import 'package:s3_storage_client/src/s3_errors.dart';
+import 'package:s3_storage_client/src/s3_helpers.dart';
+import 'package:s3_storage_client/src/s3_poller.dart';
+import 'package:s3_storage_client/src/s3_sign.dart';
+import 'package:s3_storage_client/src/s3_stream.dart';
+import 'package:s3_storage_client/src/s3_uploader.dart';
+import 'package:s3_storage_client/src/utils.dart';
 import 'package:xml/xml.dart' as xml;
 import 'package:xml/xml.dart' show XmlElement;
 

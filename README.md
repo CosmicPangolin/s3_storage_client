@@ -67,8 +67,8 @@ final s3_storage = S3Storage(
 
 **File upload**
 ```dart
-import 'package:s3_storage/io.dart';
-import 'package:s3_storage/s3_storage.dart';
+import 'package:s3_storage_client/io.dart';
+import 'package:s3_storage_client/s3_storage.dart';
 
 void main() async {
   final s3_storage = S3Storage(
@@ -83,11 +83,11 @@ void main() async {
 
 For complete example, see: [example]
 
-> To use `fPutObject()` and `fGetObject`, you have to `import 'package:s3_storage/io.dart';`
+> To use `fPutObject()` and `fGetObject`, you have to `import 'package:s3_storage_client/io.dart';`
 
 **Upload with progress**
 ```dart
-import 'package:s3_storage/s3_storage.dart';
+import 'package:s3_storage_client/s3_storage.dart';
 
 void main() async {
   final s3_storage = S3Storage(
@@ -109,7 +109,7 @@ void main() async {
 
 ```dart
 import 'dart:io';
-import 'package:s3_storage/s3_storage.dart';
+import 'package:s3_storage_client/s3_storage.dart';
 
 void main() async {
   final s3_storage = S3Storage(

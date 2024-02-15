@@ -2,9 +2,9 @@ import 'package:convert/convert.dart';
 import 'package:http/http.dart';
 import 'package:intl/intl.dart';
 import 'package:mime/mime.dart' show lookupMimeType;
-import 'package:s3_storage/src/s3_client.dart';
-import 'package:s3_storage/src/s3_errors.dart';
-import 'package:s3_storage/src/s3_models_generated.dart';
+import 'package:s3_storage_client/src/s3_client.dart';
+import 'package:s3_storage_client/src/s3_errors.dart';
+import 'package:s3_storage_client/src/s3_models_generated.dart';
 import 'package:xml/xml.dart' as xml;
 
 bool isValidBucketName(String bucket) {

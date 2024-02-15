@@ -3,11 +3,11 @@ import 'dart:convert';
 import 'dart:typed_data';
 
 import 'package:http/http.dart';
-import 'package:s3_storage/s3_storage.dart';
-import 'package:s3_storage/src/aws_endpoints.dart';
-import 'package:s3_storage/src/s3_helpers.dart';
-import 'package:s3_storage/src/s3_sign.dart';
-import 'package:s3_storage/src/utils.dart';
+import 'package:s3_storage_client/s3_storage.dart';
+import 'package:s3_storage_client/src/aws_endpoints.dart';
+import 'package:s3_storage_client/src/s3_helpers.dart';
+import 'package:s3_storage_client/src/s3_sign.dart';
+import 'package:s3_storage_client/src/utils.dart';
 
 import 's3.dart';
 

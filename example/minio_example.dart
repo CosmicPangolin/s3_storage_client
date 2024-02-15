@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:s3_storage/s3_storage.dart';
+import 'package:s3_storage_client/s3_storage.dart';
 
 void main() async {
   final s3storage = S3Storage(

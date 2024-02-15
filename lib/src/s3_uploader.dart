@@ -4,11 +4,11 @@ import 'dart:typed_data';
 
 import 'package:convert/convert.dart';
 import 'package:crypto/crypto.dart';
-import 'package:s3_storage/models.dart';
-import 'package:s3_storage/s3_storage.dart';
-import 'package:s3_storage/src/s3_client.dart';
-import 'package:s3_storage/src/s3_helpers.dart';
-import 'package:s3_storage/src/utils.dart';
+import 'package:s3_storage_client/models.dart';
+import 'package:s3_storage_client/s3_storage.dart';
+import 'package:s3_storage_client/src/s3_client.dart';
+import 'package:s3_storage_client/src/s3_helpers.dart';
+import 'package:s3_storage_client/src/utils.dart';
 
 class StorageUploader implements StreamConsumer<Uint8List> {
   StorageUploader(

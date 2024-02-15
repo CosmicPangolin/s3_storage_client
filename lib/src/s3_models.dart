@@ -1,6 +1,6 @@
-import 'package:s3_storage/models.dart';
-import 'package:s3_storage/src/s3_errors.dart';
-import 'package:s3_storage/src/utils.dart';
+import 'package:s3_storage_client/models.dart';
+import 'package:s3_storage_client/src/s3_errors.dart';
+import 'package:s3_storage_client/src/utils.dart';
 import 'package:xml/xml.dart';
 
 class ListObjectsResult {
