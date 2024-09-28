@@ -834,6 +834,8 @@ class S3Storage {
     final url = _client.getBaseRequest('POST', postPolicy.formData['bucket'], null, region, null, null, null, null).url;
     var portStr = (port == 80 || port == 443) ? '' : ':$port';
     var urlStr = '${url.scheme}://${url.host}$portStr${url.path}';
+    print('urlStr: $urlStr');
+    print('postPolicy.formData: ${postPolicy.formData}');
     return PostPolicyResult(postURL: urlStr, formData: postPolicy.formData);
   }
 
