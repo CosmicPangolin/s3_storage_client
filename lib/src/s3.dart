@@ -771,13 +771,16 @@ class S3Storage {
   /// - [respHeaders]: response headers to override (optional)
   /// - [requestDate]: A date object, the url will be issued at (optional)
   Future<String> presignedGetObject(
-    String bucket,
+    String? bucket,
     String object, {
     int? expires,
     Map<String, String>? respHeaders,
     DateTime? requestDate,
   }) {
-    StorageInvalidBucketNameError.check(bucket);
+    if (bucket != null) {
+      StorageInvalidBucketNameError.check(bucket);
+    }
+
     StorageInvalidObjectNameError.check(object);
 
     return presignedUrl(
@@ -865,14 +868,16 @@ class S3Storage {
   /// - [requestDate]: A date object, the url will be issued at (optional)
   Future<String> presignedUrl(
     String method,
-    String bucket,
+    String? bucket,
     String object, {
     int? expires,
     String? resource,
     Map<String, String>? reqParams,
     DateTime? requestDate,
   }) async {
-    StorageInvalidBucketNameError.check(bucket);
+    if (bucket != null) { 
+      StorageInvalidBucketNameError.check(bucket);
+    }
     StorageInvalidObjectNameError.check(object);
 
     if (expires != null && expires < 0) {
