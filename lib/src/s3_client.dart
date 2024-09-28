@@ -271,8 +271,8 @@ class StorageClient {
       if (bucket != null) host = '$bucket.$host';
       if (object != null) path = '/$object';
     } else {
-      if (bucket != null) path = '/$bucket';
-      if (object != null) path = '/$bucket/$object';
+      if (bucket != null) path += '/$bucket';
+      if (object != null) path += '/$object';
     }
 
     final query = StringBuffer();
