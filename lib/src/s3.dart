@@ -831,6 +831,7 @@ class S3Storage {
     final signature = postPresignSignatureV4(region, date, secretKey, policyBase64);
 
     postPolicy.formData['x-amz-signature'] = signature;
+    print('getBaseRequest: ${postPolicy.formData['bucket']}, $region}');
     final url = _client.getBaseRequest('POST', postPolicy.formData['bucket'], null, region, null, null, null, null).url;
     var portStr = (port == 80 || port == 443) ? '' : ':$port';
     var urlStr = '${url.scheme}://${url.host}$portStr${url.path}';

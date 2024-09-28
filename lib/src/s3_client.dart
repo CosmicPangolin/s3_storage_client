@@ -286,6 +286,8 @@ class StorageClient {
       query.write(encodeQueries(queries));
     }
 
+    print('inputs: $bucket, $object, $resource');
+
     print('path: $path');
 
     return Uri(
