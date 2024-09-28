@@ -263,7 +263,7 @@ class StorageClient {
     Map<String, dynamic>? queries,
   ) {
     var host = s3storage.endPoint.toLowerCase();
-    var path = '/';
+    var path = '';
 
     if (isAmazonEndpoint(host)) {
       host = getS3Endpoint(s3storage.region!);
