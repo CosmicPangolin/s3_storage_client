@@ -244,9 +244,7 @@ class StorageClient {
     void Function(int)? onProgress,
   ) {
     final url = getRequestUrl(bucket, object, resource, queries);
-    print('url: $url');
     final request = StorageRequest(method, url, onProgress: onProgress);
-    print('request: $request');
     request.headers['host'] = url.authority;
 
     if (headers != null) {
@@ -285,10 +283,6 @@ class StorageClient {
       if (query.isNotEmpty) query.write('&');
       query.write(encodeQueries(queries));
     }
-
-    print('inputs: $bucket, $object, $resource');
-
-    print('path: $path');
 
     return Uri(
       scheme: s3storage.useSSL ? 'https' : 'http',
