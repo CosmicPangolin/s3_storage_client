@@ -13,15 +13,13 @@ class AbortIncompleteMultipartUpload {
   );
 
   AbortIncompleteMultipartUpload.fromXml(XmlElement? xml) {
-    daysAfterInitiation =
-        int.tryParse(getProp(xml, 'DaysAfterInitiation')!.value!);
+    daysAfterInitiation = int.tryParse(getProp(xml, 'DaysAfterInitiation')!.value!);
   }
 
   XmlNode toXml() {
     final builder = XmlBuilder();
     builder.element('AbortIncompleteMultipartUpload', nest: () {
-      builder.element('DaysAfterInitiation',
-          nest: daysAfterInitiation.toString());
+      builder.element('DaysAfterInitiation', nest: daysAfterInitiation.toString());
     });
     return builder.buildDocument();
   }
@@ -141,8 +139,7 @@ class AnalyticsConfiguration {
   AnalyticsConfiguration.fromXml(XmlElement xml) {
     filter = AnalyticsFilter.fromXml(getProp(xml, 'Filter'));
     id = getProp(xml, 'Id')?.value;
-    storageClassAnalysis =
-        StorageClassAnalysis.fromXml(getProp(xml, 'StorageClassAnalysis'));
+    storageClassAnalysis = StorageClassAnalysis.fromXml(getProp(xml, 'StorageClassAnalysis'));
   }
 
   XmlNode toXml() {
@@ -150,8 +147,7 @@ class AnalyticsConfiguration {
     builder.element('AnalyticsConfiguration', nest: () {
       builder.element('Filter', nest: filter!.toXml());
       builder.element('Id', nest: id);
-      builder.element('StorageClassAnalysis',
-          nest: storageClassAnalysis!.toXml());
+      builder.element('StorageClassAnalysis', nest: storageClassAnalysis!.toXml());
     });
     return builder.buildDocument();
   }
@@ -173,15 +169,13 @@ class AnalyticsExportDestination {
   );
 
   AnalyticsExportDestination.fromXml(XmlElement? xml) {
-    s3BucketDestination = AnalyticsS3BucketDestination.fromXml(
-        getProp(xml, 'S3BucketDestination'));
+    s3BucketDestination = AnalyticsS3BucketDestination.fromXml(getProp(xml, 'S3BucketDestination'));
   }
 
   XmlNode toXml() {
     final builder = XmlBuilder();
     builder.element('AnalyticsExportDestination', nest: () {
-      builder.element('S3BucketDestination',
-          nest: s3BucketDestination!.toXml());
+      builder.element('S3BucketDestination', nest: s3BucketDestination!.toXml());
     });
     return builder.buildDocument();
   }
@@ -469,16 +463,14 @@ class Condition {
   );
 
   Condition.fromXml(XmlElement? xml) {
-    httpErrorCodeReturnedEquals =
-        getProp(xml, 'HttpErrorCodeReturnedEquals')?.value;
+    httpErrorCodeReturnedEquals = getProp(xml, 'HttpErrorCodeReturnedEquals')?.value;
     keyPrefixEquals = getProp(xml, 'KeyPrefixEquals')?.value;
   }
 
   XmlNode toXml() {
     final builder = XmlBuilder();
     builder.element('Condition', nest: () {
-      builder.element('HttpErrorCodeReturnedEquals',
-          nest: httpErrorCodeReturnedEquals);
+      builder.element('HttpErrorCodeReturnedEquals', nest: httpErrorCodeReturnedEquals);
       builder.element('KeyPrefixEquals', nest: keyPrefixEquals);
     });
     return builder.buildDocument();
@@ -663,9 +655,7 @@ class CSVInput {
   );
 
   CSVInput.fromXml(XmlElement? xml) {
-    allowQuotedRecordDelimiter =
-        getProp(xml, 'AllowQuotedRecordDelimiter')?.value!.toUpperCase() ==
-            'TRUE';
+    allowQuotedRecordDelimiter = getProp(xml, 'AllowQuotedRecordDelimiter')?.value!.toUpperCase() == 'TRUE';
     comments = getProp(xml, 'Comments')?.value;
     fieldDelimiter = getProp(xml, 'FieldDelimiter')?.value;
     fileHeaderInfo = getProp(xml, 'FileHeaderInfo')?.value;
@@ -677,8 +667,7 @@ class CSVInput {
   XmlNode toXml() {
     final builder = XmlBuilder();
     builder.element('CSVInput', nest: () {
-      builder.element('AllowQuotedRecordDelimiter',
-          nest: allowQuotedRecordDelimiter! ? 'TRUE' : 'FALSE');
+      builder.element('AllowQuotedRecordDelimiter', nest: allowQuotedRecordDelimiter! ? 'TRUE' : 'FALSE');
       builder.element('Comments', nest: comments);
       builder.element('FieldDelimiter', nest: fieldDelimiter);
       builder.element('FileHeaderInfo', nest: fileHeaderInfo);
@@ -942,12 +931,10 @@ class Destination {
   );
 
   Destination.fromXml(XmlElement? xml) {
-    accessControlTranslation = AccessControlTranslation.fromXml(
-        getProp(xml, 'AccessControlTranslation'));
+    accessControlTranslation = AccessControlTranslation.fromXml(getProp(xml, 'AccessControlTranslation'));
     account = getProp(xml, 'Account')?.value;
     bucket = getProp(xml, 'Bucket')?.value;
-    encryptionConfiguration = EncryptionConfiguration.fromXml(
-        getProp(xml, 'EncryptionConfiguration'));
+    encryptionConfiguration = EncryptionConfiguration.fromXml(getProp(xml, 'EncryptionConfiguration'));
     metrics = Metrics.fromXml(getProp(xml, 'Metrics'));
     replicationTime = ReplicationTime.fromXml(getProp(xml, 'ReplicationTime'));
     storageClass = getProp(xml, 'StorageClass')?.value;
@@ -956,12 +943,10 @@ class Destination {
   XmlNode toXml() {
     final builder = XmlBuilder();
     builder.element('Destination', nest: () {
-      builder.element('AccessControlTranslation',
-          nest: accessControlTranslation!.toXml());
+      builder.element('AccessControlTranslation', nest: accessControlTranslation!.toXml());
       builder.element('Account', nest: account);
       builder.element('Bucket', nest: bucket);
-      builder.element('EncryptionConfiguration',
-          nest: encryptionConfiguration!.toXml());
+      builder.element('EncryptionConfiguration', nest: encryptionConfiguration!.toXml());
       builder.element('Metrics', nest: metrics!.toXml());
       builder.element('ReplicationTime', nest: replicationTime!.toXml());
       builder.element('StorageClass', nest: storageClass);
@@ -1428,15 +1413,13 @@ class InventoryDestination {
   );
 
   InventoryDestination.fromXml(XmlElement? xml) {
-    s3BucketDestination = InventoryS3BucketDestination.fromXml(
-        getProp(xml, 'S3BucketDestination'));
+    s3BucketDestination = InventoryS3BucketDestination.fromXml(getProp(xml, 'S3BucketDestination'));
   }
 
   XmlNode toXml() {
     final builder = XmlBuilder();
     builder.element('InventoryDestination', nest: () {
-      builder.element('S3BucketDestination',
-          nest: s3BucketDestination!.toXml());
+      builder.element('S3BucketDestination', nest: s3BucketDestination!.toXml());
     });
     return builder.buildDocument();
   }
@@ -1680,8 +1663,7 @@ class LifecycleExpiration {
   LifecycleExpiration.fromXml(XmlElement? xml) {
     date = DateTime.parse(getProp(xml, 'Date')!.value!);
     days = int.tryParse(getProp(xml, 'Days')!.value!);
-    expiredObjectDeleteMarker =
-        getProp(xml, 'ExpiredObjectDeleteMarker')?.value!.toUpperCase() == 'TRUE';
+    expiredObjectDeleteMarker = getProp(xml, 'ExpiredObjectDeleteMarker')?.value!.toUpperCase() == 'TRUE';
   }
 
   XmlNode toXml() {
@@ -1689,8 +1671,7 @@ class LifecycleExpiration {
     builder.element('LifecycleExpiration', nest: () {
       builder.element('Date', nest: date!.toIso8601String());
       builder.element('Days', nest: days.toString());
-      builder.element('ExpiredObjectDeleteMarker',
-          nest: expiredObjectDeleteMarker! ? 'TRUE' : 'FALSE');
+      builder.element('ExpiredObjectDeleteMarker', nest: expiredObjectDeleteMarker! ? 'TRUE' : 'FALSE');
     });
     return builder.buildDocument();
   }
@@ -1720,15 +1701,13 @@ class LifecycleRule {
   );
 
   LifecycleRule.fromXml(XmlElement? xml) {
-    abortIncompleteMultipartUpload = AbortIncompleteMultipartUpload.fromXml(
-        getProp(xml, 'AbortIncompleteMultipartUpload'));
+    abortIncompleteMultipartUpload =
+        AbortIncompleteMultipartUpload.fromXml(getProp(xml, 'AbortIncompleteMultipartUpload'));
     expiration = LifecycleExpiration.fromXml(getProp(xml, 'Expiration'));
     filter = LifecycleRuleFilter.fromXml(getProp(xml, 'Filter'));
     iD = getProp(xml, 'ID')?.value;
-    noncurrentVersionExpiration = NoncurrentVersionExpiration.fromXml(
-        getProp(xml, 'NoncurrentVersionExpiration'));
-    noncurrentVersionTransitions = NoncurrentVersionTransition.fromXml(
-        getProp(xml, 'NoncurrentVersionTransitions'));
+    noncurrentVersionExpiration = NoncurrentVersionExpiration.fromXml(getProp(xml, 'NoncurrentVersionExpiration'));
+    noncurrentVersionTransitions = NoncurrentVersionTransition.fromXml(getProp(xml, 'NoncurrentVersionTransitions'));
     prefix = getProp(xml, 'Prefix')?.value;
     status = getProp(xml, 'Status')?.value;
     transitions = Transition.fromXml(getProp(xml, 'Transitions'));
@@ -1737,15 +1716,12 @@ class LifecycleRule {
   XmlNode toXml() {
     final builder = XmlBuilder();
     builder.element('LifecycleRule', nest: () {
-      builder.element('AbortIncompleteMultipartUpload',
-          nest: abortIncompleteMultipartUpload!.toXml());
+      builder.element('AbortIncompleteMultipartUpload', nest: abortIncompleteMultipartUpload!.toXml());
       builder.element('Expiration', nest: expiration!.toXml());
       builder.element('Filter', nest: filter!.toXml());
       builder.element('ID', nest: iD);
-      builder.element('NoncurrentVersionExpiration',
-          nest: noncurrentVersionExpiration!.toXml());
-      builder.element('NoncurrentVersionTransitions',
-          nest: noncurrentVersionTransitions!.toXml());
+      builder.element('NoncurrentVersionExpiration', nest: noncurrentVersionExpiration!.toXml());
+      builder.element('NoncurrentVersionTransitions', nest: noncurrentVersionTransitions!.toXml());
       builder.element('Prefix', nest: prefix);
       builder.element('Status', nest: status);
       builder.element('Transitions', nest: transitions!.toXml());
@@ -1913,8 +1889,7 @@ class Metrics {
   );
 
   Metrics.fromXml(XmlElement? xml) {
-    eventThreshold =
-        ReplicationTimeValue.fromXml(getProp(xml, 'EventThreshold'));
+    eventThreshold = ReplicationTimeValue.fromXml(getProp(xml, 'EventThreshold'));
     status = getProp(xml, 'Status')?.value;
   }
 
@@ -2135,28 +2110,22 @@ class NotificationConfiguration {
   );
 
   NotificationConfiguration.fromXml(XmlElement xml) {
-    lambdaFunctionConfigurations = LambdaFunctionConfiguration.fromXml(
-        getProp(xml, 'LambdaFunctionConfigurations'));
-    queueConfigurations =
-        QueueConfiguration.fromXml(getProp(xml, 'QueueConfigurations'));
-    topicConfigurations =
-        TopicConfiguration.fromXml(getProp(xml, 'TopicConfigurations'));
+    lambdaFunctionConfigurations = LambdaFunctionConfiguration.fromXml(getProp(xml, 'LambdaFunctionConfigurations'));
+    queueConfigurations = QueueConfiguration.fromXml(getProp(xml, 'QueueConfigurations'));
+    topicConfigurations = TopicConfiguration.fromXml(getProp(xml, 'TopicConfigurations'));
   }
 
   XmlNode toXml() {
     final builder = XmlBuilder();
     builder.element('NotificationConfiguration', nest: () {
       if (lambdaFunctionConfigurations != null) {
-        builder.element('LambdaFunctionConfigurations',
-            nest: lambdaFunctionConfigurations!.toXml());
+        builder.element('LambdaFunctionConfigurations', nest: lambdaFunctionConfigurations!.toXml());
       }
       if (queueConfigurations != null) {
-        builder.element('QueueConfigurations',
-            nest: queueConfigurations!.toXml());
+        builder.element('QueueConfigurations', nest: queueConfigurations!.toXml());
       }
       if (topicConfigurations != null) {
-        builder.element('TopicConfigurations',
-            nest: topicConfigurations!.toXml());
+        builder.element('TopicConfigurations', nest: topicConfigurations!.toXml());
       }
     });
     return builder.buildDocument();
@@ -2181,19 +2150,15 @@ class NotificationConfigurationDeprecated {
   );
 
   NotificationConfigurationDeprecated.fromXml(XmlElement xml) {
-    cloudFunctionConfiguration = CloudFunctionConfiguration.fromXml(
-        getProp(xml, 'CloudFunctionConfiguration'));
-    queueConfiguration = QueueConfigurationDeprecated.fromXml(
-        getProp(xml, 'QueueConfiguration'));
-    topicConfiguration = TopicConfigurationDeprecated.fromXml(
-        getProp(xml, 'TopicConfiguration'));
+    cloudFunctionConfiguration = CloudFunctionConfiguration.fromXml(getProp(xml, 'CloudFunctionConfiguration'));
+    queueConfiguration = QueueConfigurationDeprecated.fromXml(getProp(xml, 'QueueConfiguration'));
+    topicConfiguration = TopicConfigurationDeprecated.fromXml(getProp(xml, 'TopicConfiguration'));
   }
 
   XmlNode toXml() {
     final builder = XmlBuilder();
     builder.element('NotificationConfigurationDeprecated', nest: () {
-      builder.element('CloudFunctionConfiguration',
-          nest: cloudFunctionConfiguration!.toXml());
+      builder.element('CloudFunctionConfiguration', nest: cloudFunctionConfiguration!.toXml());
       builder.element('QueueConfiguration', nest: queueConfiguration!.toXml());
       builder.element('TopicConfiguration', nest: topicConfiguration!.toXml());
     });
@@ -2246,9 +2211,11 @@ class Object {
   Object.fromXml(XmlElement xml) {
     eTag = getProp(xml, 'ETag')?.value;
     key = getProp(xml, 'Key')?.value;
-    lastModified = DateTime.parse(getProp(xml, 'LastModified')!.value!);
+    final lastModifiedValue = getProp(xml, 'LastModified')?.value;
+    lastModified = lastModifiedValue != null ? DateTime.parse(lastModifiedValue) : null;
     owner = Owner.fromXml(getProp(xml, 'Owner'));
-    size = int.tryParse(getProp(xml, 'Size')!.value!);
+    final sizeValue = getProp(xml, 'Size')?.value;
+    size = sizeValue != null ? int.tryParse(sizeValue) : null;
     storageClass = getProp(xml, 'StorageClass')?.value;
   }
 
@@ -2385,8 +2352,7 @@ class ObjectLockRetention {
     final builder = XmlBuilder();
     builder.element('ObjectLockRetention', nest: () {
       builder.element('Mode', nest: mode);
-      builder.element('RetainUntilDate',
-          nest: retainUntilDate!.toIso8601String());
+      builder.element('RetainUntilDate', nest: retainUntilDate!.toIso8601String());
     });
     return builder.buildDocument();
   }
@@ -2405,8 +2371,7 @@ class ObjectLockRule {
   );
 
   ObjectLockRule.fromXml(XmlElement? xml) {
-    defaultRetention =
-        DefaultRetention.fromXml(getProp(xml, 'DefaultRetention'));
+    defaultRetention = DefaultRetention.fromXml(getProp(xml, 'DefaultRetention'));
   }
 
   XmlNode toXml() {
@@ -2704,27 +2669,19 @@ class PublicAccessBlockConfiguration {
   );
 
   PublicAccessBlockConfiguration.fromXml(XmlElement xml) {
-    blockPublicAcls =
-        getProp(xml, 'BlockPublicAcls')?.value!.toUpperCase() == 'TRUE';
-    blockPublicPolicy =
-        getProp(xml, 'BlockPublicPolicy')?.value!.toUpperCase() == 'TRUE';
-    ignorePublicAcls =
-        getProp(xml, 'IgnorePublicAcls')?.value!.toUpperCase() == 'TRUE';
-    restrictPublicBuckets =
-        getProp(xml, 'RestrictPublicBuckets')?.value!.toUpperCase() == 'TRUE';
+    blockPublicAcls = getProp(xml, 'BlockPublicAcls')?.value!.toUpperCase() == 'TRUE';
+    blockPublicPolicy = getProp(xml, 'BlockPublicPolicy')?.value!.toUpperCase() == 'TRUE';
+    ignorePublicAcls = getProp(xml, 'IgnorePublicAcls')?.value!.toUpperCase() == 'TRUE';
+    restrictPublicBuckets = getProp(xml, 'RestrictPublicBuckets')?.value!.toUpperCase() == 'TRUE';
   }
 
   XmlNode toXml() {
     final builder = XmlBuilder();
     builder.element('PublicAccessBlockConfiguration', nest: () {
-      builder.element('BlockPublicAcls',
-          nest: blockPublicAcls! ? 'TRUE' : 'FALSE');
-      builder.element('BlockPublicPolicy',
-          nest: blockPublicPolicy! ? 'TRUE' : 'FALSE');
-      builder.element('IgnorePublicAcls',
-          nest: ignorePublicAcls! ? 'TRUE' : 'FALSE');
-      builder.element('RestrictPublicBuckets',
-          nest: restrictPublicBuckets! ? 'TRUE' : 'FALSE');
+      builder.element('BlockPublicAcls', nest: blockPublicAcls! ? 'TRUE' : 'FALSE');
+      builder.element('BlockPublicPolicy', nest: blockPublicPolicy! ? 'TRUE' : 'FALSE');
+      builder.element('IgnorePublicAcls', nest: ignorePublicAcls! ? 'TRUE' : 'FALSE');
+      builder.element('RestrictPublicBuckets', nest: restrictPublicBuckets! ? 'TRUE' : 'FALSE');
     });
     return builder.buildDocument();
   }
@@ -2961,34 +2918,28 @@ class ReplicationRule {
   );
 
   ReplicationRule.fromXml(XmlElement? xml) {
-    deleteMarkerReplication = DeleteMarkerReplication.fromXml(
-        getProp(xml, 'DeleteMarkerReplication'));
+    deleteMarkerReplication = DeleteMarkerReplication.fromXml(getProp(xml, 'DeleteMarkerReplication'));
     destination = Destination.fromXml(getProp(xml, 'Destination'));
-    existingObjectReplication = ExistingObjectReplication.fromXml(
-        getProp(xml, 'ExistingObjectReplication'));
+    existingObjectReplication = ExistingObjectReplication.fromXml(getProp(xml, 'ExistingObjectReplication'));
     filter = ReplicationRuleFilter.fromXml(getProp(xml, 'Filter'));
     iD = getProp(xml, 'ID')?.value;
     prefix = getProp(xml, 'Prefix')?.value;
     priority = int.tryParse(getProp(xml, 'Priority')!.value!);
-    sourceSelectionCriteria = SourceSelectionCriteria.fromXml(
-        getProp(xml, 'SourceSelectionCriteria'));
+    sourceSelectionCriteria = SourceSelectionCriteria.fromXml(getProp(xml, 'SourceSelectionCriteria'));
     status = getProp(xml, 'Status')?.value;
   }
 
   XmlNode toXml() {
     final builder = XmlBuilder();
     builder.element('ReplicationRule', nest: () {
-      builder.element('DeleteMarkerReplication',
-          nest: deleteMarkerReplication!.toXml());
+      builder.element('DeleteMarkerReplication', nest: deleteMarkerReplication!.toXml());
       builder.element('Destination', nest: destination!.toXml());
-      builder.element('ExistingObjectReplication',
-          nest: existingObjectReplication!.toXml());
+      builder.element('ExistingObjectReplication', nest: existingObjectReplication!.toXml());
       builder.element('Filter', nest: filter!.toXml());
       builder.element('ID', nest: iD);
       builder.element('Prefix', nest: prefix);
       builder.element('Priority', nest: priority.toString());
-      builder.element('SourceSelectionCriteria',
-          nest: sourceSelectionCriteria!.toXml());
+      builder.element('SourceSelectionCriteria', nest: sourceSelectionCriteria!.toXml());
       builder.element('Status', nest: status);
     });
     return builder.buildDocument();
@@ -3193,11 +3144,9 @@ class RestoreRequest {
   RestoreRequest.fromXml(XmlElement xml) {
     days = int.tryParse(getProp(xml, 'Days')!.value!);
     description = getProp(xml, 'Description')?.value;
-    glacierJobParameters =
-        GlacierJobParameters.fromXml(getProp(xml, 'GlacierJobParameters'));
+    glacierJobParameters = GlacierJobParameters.fromXml(getProp(xml, 'GlacierJobParameters'));
     outputLocation = OutputLocation.fromXml(getProp(xml, 'OutputLocation'));
-    selectParameters =
-        SelectParameters.fromXml(getProp(xml, 'SelectParameters'));
+    selectParameters = SelectParameters.fromXml(getProp(xml, 'SelectParameters'));
     tier = getProp(xml, 'Tier')?.value;
     type = getProp(xml, 'Type')?.value;
   }
@@ -3207,8 +3156,7 @@ class RestoreRequest {
     builder.element('RestoreRequest', nest: () {
       builder.element('Days', nest: days.toString());
       builder.element('Description', nest: description);
-      builder.element('GlacierJobParameters',
-          nest: glacierJobParameters!.toXml());
+      builder.element('GlacierJobParameters', nest: glacierJobParameters!.toXml());
       builder.element('OutputLocation', nest: outputLocation!.toXml());
       builder.element('SelectParameters', nest: selectParameters!.toXml());
       builder.element('Tier', nest: tier);
@@ -3281,14 +3229,12 @@ class Rule {
   );
 
   Rule.fromXml(XmlElement? xml) {
-    abortIncompleteMultipartUpload = AbortIncompleteMultipartUpload.fromXml(
-        getProp(xml, 'AbortIncompleteMultipartUpload'));
+    abortIncompleteMultipartUpload =
+        AbortIncompleteMultipartUpload.fromXml(getProp(xml, 'AbortIncompleteMultipartUpload'));
     expiration = LifecycleExpiration.fromXml(getProp(xml, 'Expiration'));
     iD = getProp(xml, 'ID')?.value;
-    noncurrentVersionExpiration = NoncurrentVersionExpiration.fromXml(
-        getProp(xml, 'NoncurrentVersionExpiration'));
-    noncurrentVersionTransition = NoncurrentVersionTransition.fromXml(
-        getProp(xml, 'NoncurrentVersionTransition'));
+    noncurrentVersionExpiration = NoncurrentVersionExpiration.fromXml(getProp(xml, 'NoncurrentVersionExpiration'));
+    noncurrentVersionTransition = NoncurrentVersionTransition.fromXml(getProp(xml, 'NoncurrentVersionTransition'));
     prefix = getProp(xml, 'Prefix')?.value;
     status = getProp(xml, 'Status')?.value;
     transition = Transition.fromXml(getProp(xml, 'Transition'));
@@ -3297,14 +3243,11 @@ class Rule {
   XmlNode toXml() {
     final builder = XmlBuilder();
     builder.element('Rule', nest: () {
-      builder.element('AbortIncompleteMultipartUpload',
-          nest: abortIncompleteMultipartUpload!.toXml());
+      builder.element('AbortIncompleteMultipartUpload', nest: abortIncompleteMultipartUpload!.toXml());
       builder.element('Expiration', nest: expiration!.toXml());
       builder.element('ID', nest: iD);
-      builder.element('NoncurrentVersionExpiration',
-          nest: noncurrentVersionExpiration!.toXml());
-      builder.element('NoncurrentVersionTransition',
-          nest: noncurrentVersionTransition!.toXml());
+      builder.element('NoncurrentVersionExpiration', nest: noncurrentVersionExpiration!.toXml());
+      builder.element('NoncurrentVersionTransition', nest: noncurrentVersionTransition!.toXml());
       builder.element('Prefix', nest: prefix);
       builder.element('Status', nest: status);
       builder.element('Transition', nest: transition!.toXml());
@@ -3509,10 +3452,8 @@ class SelectParameters {
   SelectParameters.fromXml(XmlElement? xml) {
     expression = getProp(xml, 'Expression')?.value;
     expressionType = getProp(xml, 'ExpressionType')?.value;
-    inputSerialization =
-        InputSerialization.fromXml(getProp(xml, 'InputSerialization'));
-    outputSerialization =
-        OutputSerialization.fromXml(getProp(xml, 'OutputSerialization'));
+    inputSerialization = InputSerialization.fromXml(getProp(xml, 'InputSerialization'));
+    outputSerialization = OutputSerialization.fromXml(getProp(xml, 'OutputSerialization'));
   }
 
   XmlNode toXml() {
@@ -3521,8 +3462,7 @@ class SelectParameters {
       builder.element('Expression', nest: expression);
       builder.element('ExpressionType', nest: expressionType);
       builder.element('InputSerialization', nest: inputSerialization!.toXml());
-      builder.element('OutputSerialization',
-          nest: outputSerialization!.toXml());
+      builder.element('OutputSerialization', nest: outputSerialization!.toXml());
     });
     return builder.buildDocument();
   }
@@ -3597,15 +3537,14 @@ class ServerSideEncryptionRule {
   );
 
   ServerSideEncryptionRule.fromXml(XmlElement? xml) {
-    applyServerSideEncryptionByDefault = ServerSideEncryptionByDefault.fromXml(
-        getProp(xml, 'ApplyServerSideEncryptionByDefault'));
+    applyServerSideEncryptionByDefault =
+        ServerSideEncryptionByDefault.fromXml(getProp(xml, 'ApplyServerSideEncryptionByDefault'));
   }
 
   XmlNode toXml() {
     final builder = XmlBuilder();
     builder.element('ServerSideEncryptionRule', nest: () {
-      builder.element('ApplyServerSideEncryptionByDefault',
-          nest: applyServerSideEncryptionByDefault!.toXml());
+      builder.element('ApplyServerSideEncryptionByDefault', nest: applyServerSideEncryptionByDefault!.toXml());
     });
     return builder.buildDocument();
   }
@@ -3621,15 +3560,13 @@ class SourceSelectionCriteria {
   );
 
   SourceSelectionCriteria.fromXml(XmlElement? xml) {
-    sseKmsEncryptedObjects =
-        SseKmsEncryptedObjects.fromXml(getProp(xml, 'SseKmsEncryptedObjects'));
+    sseKmsEncryptedObjects = SseKmsEncryptedObjects.fromXml(getProp(xml, 'SseKmsEncryptedObjects'));
   }
 
   XmlNode toXml() {
     final builder = XmlBuilder();
     builder.element('SourceSelectionCriteria', nest: () {
-      builder.element('SseKmsEncryptedObjects',
-          nest: sseKmsEncryptedObjects!.toXml());
+      builder.element('SseKmsEncryptedObjects', nest: sseKmsEncryptedObjects!.toXml());
     });
     return builder.buildDocument();
   }
@@ -3758,8 +3695,7 @@ class StorageClassAnalysis {
   );
 
   StorageClassAnalysis.fromXml(XmlElement? xml) {
-    dataExport =
-        StorageClassAnalysisDataExport.fromXml(getProp(xml, 'DataExport'));
+    dataExport = StorageClassAnalysisDataExport.fromXml(getProp(xml, 'DataExport'));
   }
 
   XmlNode toXml() {
@@ -3782,8 +3718,7 @@ class StorageClassAnalysisDataExport {
   );
 
   StorageClassAnalysisDataExport.fromXml(XmlElement? xml) {
-    destination =
-        AnalyticsExportDestination.fromXml(getProp(xml, 'Destination'));
+    destination = AnalyticsExportDestination.fromXml(getProp(xml, 'Destination'));
     outputSchemaVersion = getProp(xml, 'OutputSchemaVersion')?.value;
   }
 
@@ -4035,8 +3970,7 @@ class WebsiteConfiguration {
   WebsiteConfiguration.fromXml(XmlElement xml) {
     errorDocument = ErrorDocument.fromXml(getProp(xml, 'ErrorDocument'));
     indexDocument = IndexDocument.fromXml(getProp(xml, 'IndexDocument'));
-    redirectAllRequestsTo =
-        RedirectAllRequestsTo.fromXml(getProp(xml, 'RedirectAllRequestsTo'));
+    redirectAllRequestsTo = RedirectAllRequestsTo.fromXml(getProp(xml, 'RedirectAllRequestsTo'));
     routingRules = RoutingRule.fromXml(getProp(xml, 'RoutingRules'));
   }
 
@@ -4045,8 +3979,7 @@ class WebsiteConfiguration {
     builder.element('WebsiteConfiguration', nest: () {
       builder.element('ErrorDocument', nest: errorDocument!.toXml());
       builder.element('IndexDocument', nest: indexDocument!.toXml());
-      builder.element('RedirectAllRequestsTo',
-          nest: redirectAllRequestsTo!.toXml());
+      builder.element('RedirectAllRequestsTo', nest: redirectAllRequestsTo!.toXml());
       builder.element('RoutingRules', nest: routingRules!.toXml());
     });
     return builder.buildDocument();
