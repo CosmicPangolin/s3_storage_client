@@ -574,7 +574,7 @@ class S3Storage {
     validate(resp);
 
     final node = xml.XmlDocument.parse(resp.body);
-    final isTruncated = getNodeProp(node.rootElement, 'IsTruncated')!.value!;
+    final isTruncated = getNodeProp(node.rootElement, 'IsTruncated')?.value ?? 'false';
     final nextMarker = getNodeProp(node.rootElement, 'NextMarker')?.value;
     final objs = node.findAllElements('Contents').map((c) => Object.fromXml(c));
     final prefixes = node.findAllElements('CommonPrefixes').map((c) => CommonPrefix.fromXml(c));
@@ -682,7 +682,7 @@ class S3Storage {
     validate(resp);
 
     final node = xml.XmlDocument.parse(resp.body);
-    final isTruncated = getNodeProp(node.rootElement, 'IsTruncated')!.value!;
+    final isTruncated = getNodeProp(node.rootElement, 'IsTruncated')?.value ?? 'false';
     final nextContinuationToken = getNodeProp(node.rootElement, 'NextContinuationToken')?.value;
     final objs = node.findAllElements('Contents').map((c) => Object.fromXml(c));
     final prefixes = node.findAllElements('CommonPrefixes').map((c) => CommonPrefix.fromXml(c));
