@@ -52,9 +52,9 @@ class CompleteMultipartUpload {
 
 class ListMultipartUploadsOutput {
   ListMultipartUploadsOutput.fromXml(XmlElement xml) {
-    isTruncated = getProp(xml, 'IsLatest')?.value?.toUpperCase() == 'TRUE';
-    nextKeyMarker = getProp(xml, 'NextKeyMarker')?.value;
-    nextUploadIdMarker = getProp(xml, 'NextUploadIdMarker')?.value;
+    isTruncated = getProp(xml, 'IsLatest')?.text.toUpperCase() == 'TRUE';
+    nextKeyMarker = getProp(xml, 'NextKeyMarker')?.text;
+    nextUploadIdMarker = getProp(xml, 'NextUploadIdMarker')?.text;
     uploads = xml.findElements('Upload').map((e) => MultipartUpload.fromXml(e)).toList();
   }
 
@@ -66,8 +66,8 @@ class ListMultipartUploadsOutput {
 
 class ListPartsOutput {
   ListPartsOutput.fromXml(XmlElement xml) {
-    isTruncated = getProp(xml, 'IsLatest')?.value?.toUpperCase() == 'TRUE';
-    nextPartNumberMarker = int.parse(getProp(xml, 'NextPartNumberMarker')!.value!);
+    isTruncated = getProp(xml, 'IsLatest')?.text.toUpperCase() == 'TRUE';
+    nextPartNumberMarker = int.parse(getProp(xml, 'NextPartNumberMarker')!.text);
     parts = xml.findElements('Upload').map((e) => Part.fromXml(e)).toList();
   }
 

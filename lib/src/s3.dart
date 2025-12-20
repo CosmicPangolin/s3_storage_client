@@ -179,7 +179,7 @@ class S3Storage {
       throw StorageS3Error(error.message, error, resp);
     }
 
-    final etag = node.findAllElements('ETag').first.value!;
+    final etag = node.findAllElements('ETag').first.text;
     return etag;
   }
 
@@ -320,8 +320,8 @@ class S3Storage {
 
     final node = xml.XmlDocument.parse(resp.body);
 
-    var location = node.findAllElements('LocationConstraint').first.value;
-    if (location == null || location.isEmpty) {
+    var location = node.findAllElements('LocationConstraint').first.text;
+    if (location.isEmpty) {
       location = 'us-east-1';
     }
 
@@ -398,7 +398,7 @@ class S3Storage {
     validate(resp, expect: 200);
 
     final node = xml.XmlDocument.parse(resp.body);
-    return node.findAllElements('UploadId').first.value!;
+    return node.findAllElements('UploadId').first.text;
   }
 
   /// Returns a stream that emits objects that are partially uploaded.
@@ -607,8 +607,8 @@ class S3Storage {
       }
     }
     
-    final isTruncated = getNodeProp(node.rootElement, 'IsTruncated')?.value ?? 'false';
-    final nextMarker = getNodeProp(node.rootElement, 'NextMarker')?.value;
+    final isTruncated = getNodeProp(node.rootElement, 'IsTruncated')?.text ?? 'false';
+    final nextMarker = getNodeProp(node.rootElement, 'NextMarker')?.text;
     final objs = node.findAllElements('Contents').map((c) => Object.fromXml(c));
     final prefixes = node.findAllElements('CommonPrefixes').map((c) => CommonPrefix.fromXml(c));
 
@@ -715,8 +715,8 @@ class S3Storage {
     validate(resp);
 
     final node = xml.XmlDocument.parse(resp.body);
-    final isTruncated = getNodeProp(node.rootElement, 'IsTruncated')?.value ?? 'false';
-    final nextContinuationToken = getNodeProp(node.rootElement, 'NextContinuationToken')?.value;
+    final isTruncated = getNodeProp(node.rootElement, 'IsTruncated')?.text ?? 'false';
+    final nextContinuationToken = getNodeProp(node.rootElement, 'NextContinuationToken')?.text;
     final objs = node.findAllElements('Contents').map((c) => Object.fromXml(c));
     final prefixes = node.findAllElements('CommonPrefixes').map((c) => CommonPrefix.fromXml(c));
 
