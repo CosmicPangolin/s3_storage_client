@@ -1,6 +1,6 @@
 name: s3_storage_client
 description: S3 Dart Client SDK that provides simple APIs to access any Amazon S3 API compatible object storage server.
-version: 2025.12.4
+version: 2025.12.5
 
 environment:
   sdk: ">=3.0.0 <4.0.0"

@@ -1,8 +1,32 @@
 import 'package:xml/xml.dart';
 
+/// Internal flag for debug logging - use S3Storage.traceXmlParsing instead
+bool debugXmlParsing = false;
+
 XmlElement? getProp(XmlElement? xml, String name) {
-  if (xml == null) return null;
+  if (xml == null) {
+    if (debugXmlParsing) print('[getProp] xml is null, searching for: $name');
+    return null;
+  }
+  
+  if (debugXmlParsing) {
+    print('[getProp] Searching for "$name" in element "${xml.localName}"');
+    print('[getProp] Element has ${xml.childElements.length} child elements:');
+    for (final child in xml.childElements) {
+      print('[getProp]   - localName: "${child.localName}", name: "${child.name}", value: "${child.value}", text: "${child.text}"');
+    }
+  }
+  
   final result = xml.findElements(name);
+  
+  if (debugXmlParsing) {
+    print('[getProp] findElements("$name") returned ${result.length} results');
+    if (result.isNotEmpty) {
+      final found = result.first;
+      print('[getProp] Found element - localName: "${found.localName}", value: "${found.value}", text: "${found.text}"');
+    }
+  }
+  
   return result.isNotEmpty ? result.first : null;
 }
 
@@ -2209,14 +2233,31 @@ class Object {
   );
 
   Object.fromXml(XmlElement xml) {
+    if (debugXmlParsing) {
+      print('[Object.fromXml] Parsing Object from XML element: ${xml.localName}');
+      print('[Object.fromXml] XML element namespace: ${xml.namespaceUri}');
+      print('[Object.fromXml] Full XML: ${xml.toXmlString(pretty: true)}');
+    }
+    
     eTag = getProp(xml, 'ETag')?.value;
+    if (debugXmlParsing) print('[Object.fromXml] eTag = $eTag');
+    
     key = getProp(xml, 'Key')?.value;
+    if (debugXmlParsing) print('[Object.fromXml] key = $key');
+    
     final lastModifiedValue = getProp(xml, 'LastModified')?.value;
+    if (debugXmlParsing) print('[Object.fromXml] lastModifiedValue = $lastModifiedValue');
     lastModified = lastModifiedValue != null ? DateTime.parse(lastModifiedValue) : null;
+    
     owner = Owner.fromXml(getProp(xml, 'Owner'));
+    if (debugXmlParsing) print('[Object.fromXml] owner = $owner');
+    
     final sizeValue = getProp(xml, 'Size')?.value;
+    if (debugXmlParsing) print('[Object.fromXml] sizeValue = $sizeValue');
     size = sizeValue != null ? int.tryParse(sizeValue) : null;
+    
     storageClass = getProp(xml, 'StorageClass')?.value;
+    if (debugXmlParsing) print('[Object.fromXml] storageClass = $storageClass');
   }
 
   XmlNode toXml() {

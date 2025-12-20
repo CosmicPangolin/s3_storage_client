@@ -29,7 +29,11 @@ class S3Storage {
     this.sessionToken,
     this.region,
     this.enableTrace = false,
-  }) : port = port ?? implyPort(useSSL) {
+    bool traceXmlParsing = false,
+  }) : port = port ?? implyPort(useSSL),
+       _traceXmlParsing = traceXmlParsing {
+    // Set the global debug flag for XML parsing
+    debugXmlParsing = traceXmlParsing;
     if (!isValidEndpoint(endPoint)) {
       throw StorageInvalidEndpointError(
         'End point $endPoint is not a valid domain or ip address',
@@ -86,6 +90,14 @@ class S3Storage {
 
   /// Set this value to enable tracing. (Optional)
   final bool enableTrace;
+
+  /// Enable detailed XML parsing trace logs for debugging S3 response parsing.
+  bool get traceXmlParsing => _traceXmlParsing;
+  set traceXmlParsing(bool value) {
+    _traceXmlParsing = value;
+    debugXmlParsing = value;
+  }
+  bool _traceXmlParsing;
 
   late StorageClient _client;
   final _regionMap = <String?, String>{};
@@ -573,7 +585,28 @@ class S3Storage {
 
     validate(resp);
 
+    // Debug logging
+    if (debugXmlParsing) {
+      print('[listObjectsQuery] Raw XML response:');
+      print(resp.body);
+      print('[listObjectsQuery] --- End of XML ---');
+    }
+
     final node = xml.XmlDocument.parse(resp.body);
+    
+    if (debugXmlParsing) {
+      print('[listObjectsQuery] Root element: ${node.rootElement.localName}');
+      print('[listObjectsQuery] Root element namespace: ${node.rootElement.namespaceUri}');
+      final contents = node.findAllElements('Contents');
+      print('[listObjectsQuery] Found ${contents.length} Contents elements');
+      for (final content in contents) {
+        print('[listObjectsQuery] Contents element children:');
+        for (final child in content.childElements) {
+          print('[listObjectsQuery]   ${child.localName}: value="${child.value}" text="${child.text}"');
+        }
+      }
+    }
+    
     final isTruncated = getNodeProp(node.rootElement, 'IsTruncated')?.value ?? 'false';
     final nextMarker = getNodeProp(node.rootElement, 'NextMarker')?.value;
     final objs = node.findAllElements('Contents').map((c) => Object.fromXml(c));
