@@ -184,17 +184,25 @@ class S3Storage {
   }
 
   /// Copy the object.
+  ///
+  /// [extraHeaders] allows passing additional headers like:
+  /// - `X-Tigris-Rename: true` for metadata-only moves on Tigris
+  /// - `x-amz-acl: public-read` or `x-amz-acl: private` to set ACL
   Future<CopyObjectResult> copyObject(
     String bucket,
     String object,
-    String srcObject, [
+    String srcObject, {
     CopyConditions? conditions,
-  ]) async {
+    Map<String, String>? extraHeaders,
+  }) async {
     StorageInvalidBucketNameError.check(bucket);
     StorageInvalidObjectNameError.check(object);
     StorageInvalidObjectNameError.check(srcObject);
 
     final headers = <String, String>{};
+    if (extraHeaders != null) {
+      headers.addAll(extraHeaders);
+    }
     headers['x-amz-copy-source'] = srcObject;
 
     if (conditions != null) {
